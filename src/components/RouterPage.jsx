@@ -14,6 +14,9 @@ import JoinPage from './JoinPage';
 import MyPage from './MyPage';
 import FavoritePage from './FavoritePage';
 import CartPage from './CartPage';
+import PostsPage from './posts/PostsPage';
+import PostWrite from './posts/PostWrite';
+import PostRead from './posts/PostRead';
 
 const RouterPage = ({history}) => {
     const onLogout = () => {
@@ -35,6 +38,7 @@ const RouterPage = ({history}) => {
                             <Link to="/">Home</Link>
                             <Link to="/book">도서검색</Link>
                             <Link to="/local">지역검색</Link>
+                            <Link to="/posts">게시글</Link>
                             {sessionStorage.getItem('email') && 
                                 <>
                                     <Link to="/favorite">즐겨찾기</Link>
@@ -68,6 +72,9 @@ const RouterPage = ({history}) => {
                 <Route path="/mypage" component={MyPage}/>
                 <Route path="/favorite" component={FavoritePage}/>
                 <Route path="/cart" component={CartPage}/>
+                <Route path="/posts" component={PostsPage} exact={true}/>
+                <Route path="/posts/write" component={PostWrite}/>
+                <Route path="/posts/:id" component={PostRead}/>
             </Switch>
         </>
     )
